@@ -42,6 +42,7 @@
                         '-webkit-transform': 'translate(-50%, -50%) translate(' + clientX + 'px,' + clientY + 'px)'
                     });
                 }, 10);
+                
                 setTimeout(function () {
                     $r.removeClass('is-visible');
                 }, options.speed); 
