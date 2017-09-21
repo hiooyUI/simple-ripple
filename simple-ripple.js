@@ -64,7 +64,7 @@
             function release() {
                 setTimeout(function () {
                     $r.removeClass('is-visible');
-                }, options.speed);// 这里控制水纹的速度
+                }, options.speed);// the wave's speed 这里控制水纹的速度
             }
         });
     }
