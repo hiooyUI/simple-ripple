@@ -13,17 +13,35 @@
             speed: 200,
             color: '#000'
         };
+        var supportedTouch = true;
+        try { ontouchstart; } catch (e) { supportedTouch = false; }
         options = $.extend({}, defaults, options);
+
         this.each(function () {
             var This = $(this),
                 tpl = '<span class="ripple-container"><span class="ripple is-animated"></span></span>';
             This.append(tpl);
-            This.click(function (e) {
-                var $r = This.find('.ripple'),
-                    width = This.width(),
-                    height = This.height(),
-                    clientX = e.clientX || e.pageX,
-                    clientY = e.clientY || e.pageY;
+
+            var $r = This.find('.ripple'),
+                width = This.width(),
+                height = This.height();
+
+            if (supportedTouch) {
+                This.on('touchstart', function (e) {
+                    var clientX = e.originalEvent.touches[0].clientX,
+                        clientY = e.originalEvent.touches[0].clientY;
+                    press(clientX, clientY);
+                });
+                This.on('touchend', release);
+            } else {
+                This.on('mousedown', function (e) {
+                    var clientX = e.clientX || e.pageX,
+                        clientY = e.clientY || e.pageY;
+                    press(clientX, clientY);
+                });
+                This.on('mouseup', release);
+            }
+            function press(clientX, clientY) {
                 var radius = Math.pow(width * width + height * height, 0.5) * 2;
                 clientX = clientX - This.offset().left;
                 clientY = clientY - This.offset().top;
@@ -42,11 +60,12 @@
                         '-webkit-transform': 'translate(-50%, -50%) translate(' + clientX + 'px,' + clientY + 'px)'
                     });
                 }, 10);
-                
+            }
+            function release() {
                 setTimeout(function () {
                     $r.removeClass('is-visible');
-                }, options.speed); 
-            });
+                }, options.speed);// 这里控制水纹的速度
+            }
         });
     }
 })(jQuery);
