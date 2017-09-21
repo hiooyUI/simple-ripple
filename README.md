@@ -28,5 +28,7 @@ or
 
 ## Todo:
 
-Add mousedown status & effect.   
-Add touch / tap status & effect.
+~~Add mousedown status & effect.~~   
+~~Add touch / tap status & effect.~~
+
+v1.0.0 (2017-09-21)
