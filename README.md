@@ -1,7 +1,5 @@
 # simple-ripple
 A simple ripple effect, material design like jQuery plugin to beautify your UI component.
-   
-![Demo](http://7xsj8c.com1.z0.glb.clouddn.com/img/145805586.gif) 
 
 ## how to use it?
 ```
@@ -20,7 +18,7 @@ check the demo.html example.
 
 or
 
-[live Demo](http://www.iampua.com/pui/ripple.html)   
+[live Demo](http://www.a4z.cn/pui/ripple.html)   
    
 ## License:
 
